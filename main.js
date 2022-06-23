@@ -11,3 +11,46 @@
 
 
 
+const populate = document.getElementById('start')
+
+populate.addEventListener('click',function(){
+    // prendo il parent nel DOM
+const gridContainer = document.getElementById('grid-container');
+
+//  ciclo per il numero di quadrati che voglio generare
+for (let i = 1 ; i < 101 ; i++){
+    // creo un nuovo quadrato con le classi relative
+    const newSquare = createNewSquare();
+
+
+    // il contenuto del quadrato sarà corrispondente quello dell'ndice corrispettivo
+    newSquare.innerHTML = i;
+
+    
+
+    //aggiungo il nuovo quadrato al parent
+    gridContainer.append(newSquare);
+
+    addEventListenerWithToggle(newSquare, 'cyaned');
+
+}
+
+},{once : true})
+
+
+
+
+
+
+// funzione che mi crea il nuovo quadrato creando un nuovo HTMLelement e aggiungendogli la mia classe square
+function createNewSquare(){
+    const currentSquare = document.createElement('div');
+    currentSquare.classList.add('square');
+    return currentSquare;
+}
+// funzione che aggiunge e/o rimuove una classe a un dato elemento HTML
+function addEventListenerWithToggle(htmlElement, classToToggle){
+    htmlElement.addEventListener('click', function(){
+        htmlElement.classList.toggle(classToToggle);
+    });
+}
