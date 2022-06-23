@@ -22,16 +22,18 @@ for (let i = 1 ; i < 101 ; i++){
     // creo un nuovo quadrato con le classi relative
     const newSquare = createNewSquare();
 
-
+    let number = i
     // il contenuto del quadrato sarà corrispondente quello dell'ndice corrispettivo
-    newSquare.innerHTML = i;
+    newSquare.innerHTML = number;
 
     
 
     //aggiungo il nuovo quadrato al parent
     gridContainer.append(newSquare);
 
-    addEventListenerWithToggle(newSquare, 'cyaned');
+    addEventListenerWithToggle(newSquare, 'cyaned', i);
+    
+    
 
 }
 
@@ -49,8 +51,9 @@ function createNewSquare(){
     return currentSquare;
 }
 // funzione che aggiunge e/o rimuove una classe a un dato elemento HTML
-function addEventListenerWithToggle(htmlElement, classToToggle){
+function addEventListenerWithToggle(htmlElement, classToToggle, number){
     htmlElement.addEventListener('click', function(){
         htmlElement.classList.toggle(classToToggle);
+        console.log('hai cliccato la casella : '+ htmlElement.innerHTML);
     });
 }
